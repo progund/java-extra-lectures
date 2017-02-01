@@ -12,12 +12,12 @@ import java.io.IOException;
  * the exit code 1.
  */
 public class ChatClient{
-    public static void main(String[] args){
-	try{
-	    ChatClientInitializer cci = new ChatClientInitializer();	    
-	}catch(IOException ioe){
-	    System.err.println("Error initializing chat client: " + ioe.getMessage());
-	    System.exit(1);
-	}
+  public static void main(String[] args){
+    try{
+      ChatClientInitializer cci = new ChatClientInitializer();	    
+    }catch(IOException ioe){
+      System.err.println("Error initializing chat client: " + ioe.getMessage());
+      System.exit(1);
     }
+  }
 }
