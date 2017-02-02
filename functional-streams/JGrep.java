@@ -102,6 +102,6 @@ public class JGrep{
     System.err.println("where: ");
     System.err.println(" -i stands for case insensitive");
     System.err.println("If no files are given as argument, JGrep will read from standard in.");
-    System.exit(1);
+    System.exit(2);
   }    
 }
