@@ -8,6 +8,9 @@ import java.util.stream.Stream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.File;
+import java.util.Set;
+import java.util.HashSet;
 public class JGrep{
   public static void main(String[] args){
     Env env = new Env(args);
@@ -32,6 +35,7 @@ public class JGrep{
   }
   static class Env{
     private String[] args;
+    private Set<String> badFiles = new HashSet<>();
     public Env(String[] args){
       this.args = args;
     }
@@ -74,7 +78,14 @@ public class JGrep{
         if(regexp==null){
           regexp=arg;
         }else{
-          files.add(arg);
+          if(new File(arg).exists()){
+            files.add(arg);
+          }else{
+            if(!badFiles.contains(arg)){
+              System.err.println("JGrep: " + arg + ": No such file or directory");
+              badFiles.add(arg);
+            }
+          }
         }
       }
       return files;
