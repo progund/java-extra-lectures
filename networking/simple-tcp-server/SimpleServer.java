@@ -19,7 +19,7 @@ public class SimpleServer{
         t.start();
       } catch (IOException e) {
         System.out.println("Accept failed on port 1234: " + e.getMessage());
-        if(fails++ == maxFails){
+        if(++fails == maxFails){
           System.err.println("Failed " + fails + " times. Shutting down.");
           System.exit(-1);
         }
