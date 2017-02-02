@@ -15,7 +15,6 @@ public class JGrep{
       in.lines()
         .filter(env.pattern().asPredicate())
         .forEach(s -> {System.out.println(s); env.incMatches();});
-      try{in.close();}catch(Exception ignore){}
     }else{
       for(String file : env.files()){
         try (Stream<String> stream = Files.lines(Paths.get(file))) {
