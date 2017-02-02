@@ -1,41 +1,44 @@
 import java.util.regex.*;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.File;
-import java.util.Set;
-import java.util.HashSet;
+import java.io.*;          // IOException, InputStreamReader, BufferedReader, File
+import java.nio.file.*;    // Files, Paths
+import java.util.stream.*; // Stream;
+import java.util.*;        // Arrays, List, ArrayList, Set, HashSet
 public class JGrep{
   public static void main(String[] args){
-    Env env = new Env(args);
+    final Env env = new Env(args);
     if(!env.isValidArguments()){
       usage();
     }
     Pattern pattern = env.pattern();
     if(!env.readFromFiles()){
       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-      in.lines().filter(env.pattern().asPredicate()).forEach(System.out::println);
+      in.lines()
+        .filter(env.pattern().asPredicate())
+        .forEach(s -> {System.out.println(s); env.incMatches();});
       try{in.close();}catch(Exception ignore){}
-      System.exit(0);
     }else{
       for(String file : env.files()){
         try (Stream<String> stream = Files.lines(Paths.get(file))) {
-          stream.filter(env.pattern().asPredicate()).map(s->file.toString()+" "+s).forEach(System.out::println);
+          stream.filter(env.pattern().asPredicate())
+            // if there are more than one file in args, prefix each match with the file name:
+            .map(s -> {String prefix=env.files().size()==1?"":file.toString() + " "; s=prefix+s; return s;})
+            .forEach(s -> {System.out.println(s); env.incMatches();});
         } catch (IOException e) {
           e.printStackTrace();
         }
       }
     }
+    System.exit(env.exitStatus());
   }
   static class Env{
     private String[] args;
     private Set<String> badFiles = new HashSet<>();
+    private int matches;
+    public void incMatches(){ matches++; }
+    public int numMatches() { return matches; }
+    public int exitStatus(){
+      return badFiles.size()!=0?2:matches==0?1:0;
+    }
     public Env(String[] args){
       this.args = args;
     }
