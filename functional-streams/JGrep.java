@@ -3,6 +3,7 @@ import java.nio.file.*;    // Files, Paths
 import java.util.*;        // Arrays, List, ArrayList, Set, HashSet
 import java.util.regex.*;
 import java.util.stream.*; // Stream;
+
 public class JGrep {
   public static void main(String[] args) {
     final Env env = new Env(args);
@@ -29,24 +30,32 @@ public class JGrep {
     }
     System.exit(env.exitStatus());
   }
+
   static class Env {
     private String[] args;
     private Set<String> badFiles = new HashSet<>();
     private int matches;
+
     public void incMatches(){ matches++; }
+
     public int numMatches() { return matches; }
+
     public int exitStatus() {
       return badFiles.size() != 0 ? 2 : matches == 0 ? 1 : 0;
     }
+
     public Env(String[] args) {
       this.args = args;
     }
+
     public boolean isValidArguments() {
       return args.length > 0;
     }
+
     public boolean isCaseInsensitive() {
       return Arrays.asList(args).contains("-i");
     }
+
     public Pattern pattern() {
       if (isCaseInsensitive()) {
         return Pattern.compile(regexp(), Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
@@ -54,6 +63,7 @@ public class JGrep {
         return Pattern.compile(regexp());
       }
     }
+
     public String regexp() {
       String arg;
       String regexp = null;
@@ -68,6 +78,7 @@ public class JGrep {
       }
       return regexp;
     }
+
     public List<String>files() {
       ArrayList<String>files = new ArrayList<>();
       String arg;
@@ -92,10 +103,12 @@ public class JGrep {
       }
       return files;
     }
+
     private boolean readFromFiles() {
       return files().size() != 0;
     }
   }
+
   private static void usage() {
     System.err.println("Usage: java JGrep [-i] PATTERN [FILE]...");
     System.err.println("where: ");
