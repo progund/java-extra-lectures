@@ -1,7 +1,7 @@
 import java.io.*;          // IOException, InputStreamReader, BufferedReader, File
 import java.nio.file.*;    // Files, Paths
 import java.util.*;        // Arrays, List, ArrayList, Set, HashSet
-import java.util.regex.*;
+import java.util.regex.*;  // Pattern
 import java.util.stream.*; // Stream;
 
 public class JGrep {
