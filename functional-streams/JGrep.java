@@ -34,6 +34,7 @@ public class JGrep {
   static class Env {
     private String[] args;
     private Set<String> badFiles = new HashSet<>();
+    private  ArrayList<String>files = new ArrayList<>();
     private int matches;
 
     public void incMatches(){ matches++; }
@@ -79,8 +80,7 @@ public class JGrep {
       return regexp;
     }
 
-    public List<String>files() {
-      ArrayList<String>files = new ArrayList<>();
+    public Set<String>files() {
       String arg;
       String regexp = null;
       for(int i=0; i < args.length; i++) {
@@ -88,22 +88,24 @@ public class JGrep {
         if (arg.equals("-i")) {
           continue;
         }
-        if (regexp == null) {
+        if (regexp == null) { // It's the pattern
           regexp = arg;
-        } else {
-          if (new File(arg).exists()) {
-            files.add(arg);
-          } else {
-            if (!badFiles.contains(arg)) {
-              System.err.println("JGrep: " + arg + ": No such file or directory");
-              badFiles.add(arg);
-            }
-          }
+        } else { // It's a file argument
+          handleFileArg(arg);
         }
       }
-      return files;
+      return new TreeSet<String>(files);
     }
 
+    private void handleFileArg(String arg) {
+      if (new File(arg).exists()) {
+        files.add(arg);
+      } else if (!badFiles.contains(arg)) {
+        System.err.println("JGrep: " + arg + ": No such file or directory");
+        badFiles.add(arg);        
+      }      
+    }
+    
     private boolean readFromFiles() {
       return files().size() != 0;
     }
