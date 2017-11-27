@@ -36,7 +36,7 @@ public class JGrep {
     public void incMatches(){ matches++; }
     public int numMatches() { return matches; }
     public int exitStatus() {
-      return badFiles.size()!=0?2:matches==0?1:0;
+      return badFiles.size() != 0 ? 2 : matches == 0 ? 1 : 0;
     }
     public Env(String[] args) {
       this.args = args;
@@ -56,8 +56,8 @@ public class JGrep {
     }
     public String regexp() {
       String arg;
-      String regexp=null;
-      for(int i=0;i<args.length;i++) {
+      String regexp = null;
+      for(int i=0; i < args.length; i++) {
         arg = args[i];
         if(arg.equals("-i")) {
           continue;
@@ -71,14 +71,14 @@ public class JGrep {
     public List<String>files() {
       ArrayList<String>files = new ArrayList<>();
       String arg;
-      String regexp=null;
-      for(int i=0;i<args.length;i++) {
+      String regexp = null;
+      for(int i=0; i < args.length; i++) {
         arg = args[i];
         if (arg.equals("-i")) {
           continue;
         }
-        if (regexp==null) {
-          regexp=arg;
+        if (regexp == null) {
+          regexp = arg;
         } else {
           if (new File(arg).exists()) {
             files.add(arg);
