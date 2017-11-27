@@ -1,8 +1,8 @@
-import java.util.regex.*;
 import java.io.*;          // IOException, InputStreamReader, BufferedReader, File
 import java.nio.file.*;    // Files, Paths
-import java.util.stream.*; // Stream;
 import java.util.*;        // Arrays, List, ArrayList, Set, HashSet
+import java.util.regex.*;
+import java.util.stream.*; // Stream;
 public class JGrep {
   public static void main(String[] args) {
     final Env env = new Env(args);
