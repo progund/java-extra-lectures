@@ -1,6 +1,6 @@
-import java.util.*;
 import java.io.*;
 import java.nio.file.*;
+import java.util.*;
 import java.util.stream.*;
 
 class TestSimpleAnagram {
@@ -48,11 +48,13 @@ public class SimpleAnagram {
       return null;
     }
   }
+
   private String sortString(String s){
     char[] chars;
     Arrays.sort(chars=s.toLowerCase().toCharArray());
     return new String(chars);
   }
+  
   public Set<String> anagramsFor(String word) {    
     return anagrams.get(sortString(word));
   }
