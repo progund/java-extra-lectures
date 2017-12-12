@@ -1,6 +1,5 @@
 import java.io.Serializable;
 import java.util.List;
-//import java.util.ArrayList;
 
 import java.io.File;
 
@@ -9,21 +8,17 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Session<T> {
+public class ObjectCache<T> {
 
-  public static class Context {}
-  
   private List<T> objects;
   private long localCacheDate ;
-  private Context context;
 
   private String cacheFileName;
-  private final static long maxDiff = (1 * 60 * 1000);
+  private final static long maxDiff = (60 * 60 * 1000);
 
-  public Session(Class tClass, Context context){
+  public ObjectCache(Class tClass){
     localCacheDate = 0;
     cacheFileName = tClass.getSimpleName()+ "_serialized.data";
-    this.context=context;
   }
 
   public void set(List<T> objects) {
@@ -44,8 +39,13 @@ public class Session<T> {
     }
   }
 
+  
+  @SuppressWarnings("unchecked")
   public List<T> pull() {
     File f = new File(cacheFileName);
+    if (!f.exists()) {
+      return null;
+    }
     long diff =
       System.currentTimeMillis() - f.lastModified();
 

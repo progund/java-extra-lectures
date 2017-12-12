@@ -9,22 +9,17 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class UserSession {
+public class UserCache {
 
-  // Fake Android's Context class
-  public static class Context {}
-  
   private List<User> objects;
   private long localCacheDate ;
-  private Context context;
 
   private String cacheFileName;
-  private final static long maxDiff = (1 * 60 * 1000);
+  private final static long maxDiff = (60 * 60 * 1000);
 
-  public UserSession(Context context){
+  public UserCache(){
     localCacheDate = 0;
-    cacheFileName = UserSession.class.getSimpleName()+ "_serialized.data";
-    this.context=context;
+    cacheFileName = UserCache.class.getSimpleName()+ "_serialized.data";
   }
 
   public void set(List<User> objects) {
@@ -44,9 +39,13 @@ public class UserSession {
       ex.printStackTrace();
     }
   }
-
+  
+  @SuppressWarnings("unchecked")
   public List<User> pull() {
     File f = new File(cacheFileName);
+    if (!f.exists()) {
+      return null;
+    }
     long diff =
       System.currentTimeMillis() - f.lastModified();
 
@@ -63,8 +62,8 @@ public class UserSession {
       in = new ObjectInputStream(fis);
       tmpObjects = (List<User>) in.readObject();
       in.close();
-    } catch (Exception ex) {
-      ex.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
       return null;
     }
     objects = tmpObjects;
