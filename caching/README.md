@@ -12,11 +12,15 @@ In this lecture we'll show you how to:
 
 In this example we'll be caching User:
 
-```public class User implements Serializable {```
+```
+public class User implements Serializable {
 
-```  String name;```
+  String name;
 
-```  String email;```
+  String email;
+
+  ....
+```
 
 # Naive cache
 
