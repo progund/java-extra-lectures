@@ -16,7 +16,7 @@ public class UserCacheTest {
       
       System.out.println("main: " + users);
       cache.set(users);
-      cache.commit();
+      cache.push();
     } else {
       System.out.println("Reading objects");
       cache.pull();

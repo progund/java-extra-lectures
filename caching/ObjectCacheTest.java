@@ -16,7 +16,7 @@ public class ObjectCacheTest {
       users.add(new User("Rikard Fröberg", "rille@rillefroberg.se"));
       System.out.println("main: " + users);
       cache.set(users);
-      cache.commit();
+      cache.push();
     } else {
       System.out.println("Reading objects");
       cache.pull();

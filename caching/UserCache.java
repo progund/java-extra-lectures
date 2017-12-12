@@ -27,7 +27,7 @@ public class UserCache {
     localCacheDate = System.currentTimeMillis();
   }
 
-  public void commit() {
+  public void push() {
     FileOutputStream fos = null;
     ObjectOutputStream out = null;
     try {
