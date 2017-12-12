@@ -22,11 +22,6 @@ public class User implements Serializable {
   ....
 ```
 
-# Naive cache
+# Links
 
-# Generic cache
-
-# Android application
-
-If you look at LINK-TO-ANDROID you'll find code that uses this cache
-strategy in Android.
+* (Serializable Objects)[https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html]
