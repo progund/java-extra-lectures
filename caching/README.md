@@ -13,7 +13,9 @@ In this lecture we'll show you how to:
 In this example we'll be caching User:
 
 ```public class User implements Serializable {```
+
 ```  String name;```
+
 ```  String email;```
 
 # Naive cache
