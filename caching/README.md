@@ -25,3 +25,4 @@ public class User implements Serializable {
 # Links
 
 * [Serializable Objects](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html)
+* [Generic Types](https://docs.oracle.com/javase/tutorial/java/generics/types.html)
