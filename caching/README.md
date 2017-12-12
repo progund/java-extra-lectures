@@ -24,4 +24,4 @@ public class User implements Serializable {
 
 # Links
 
-* [https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html](Serializable Objects)
+* [Serializable Objects](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html)
