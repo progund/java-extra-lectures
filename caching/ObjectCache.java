@@ -44,13 +44,13 @@ public class ObjectCache<T> {
   public List<T> pull() {
     File f = new File(cacheFileName);
     if (!f.exists()) {
+      System.err.println("missing cache file");
       return null;
     }
     long diff =
       System.currentTimeMillis() - f.lastModified();
 
     if (diff>maxDiff) {
-      this.objects=null;
       System.err.println("cache timed out for objects");
       return null;
     }
