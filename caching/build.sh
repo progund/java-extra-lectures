@@ -50,4 +50,3 @@ generic
 
 doc
 
-pack
