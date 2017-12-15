@@ -34,15 +34,20 @@ generic()
     echo
     echo "Testing with generic solution"
     echo "====================================="
-    javac $JFLAGS User.java ObjectCacheTest.java ObjectCache.java && \
+    javac $JFLAGS User.java ObjectCacheTest.java se/juneday/ObjectCache.java && \
         test_class ObjectCacheTest && \
         echo && echo "Testing with generic solution: passed"
 }
 
+doc()
+{
+    javadoc -d doc -link  https://docs.oracle.com/javase/8/docs/api/ se.juneday
+}
 
 naive
 
 generic
 
+doc
 
-
+pack
