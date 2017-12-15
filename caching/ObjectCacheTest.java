@@ -2,6 +2,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
+import se.juneday.ObjectCache;
+
 public class ObjectCacheTest {
 
   public static void main(String[] args) {
