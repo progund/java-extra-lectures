@@ -1,4 +1,4 @@
-import se.juneday.ObjectCache;
+package se.juneday;
 
 import java.util.List;
 import java.io.File;
@@ -9,10 +9,6 @@ public class ObjectCacheReader<T> {
 
   public ObjectCacheReader(String fileName) {
     cache = new ObjectCache<>(fileName);
-    File f = new File(fileName);
-    if (!f.exists()) {
-      throw new ObjectCacheReaderException(fileName + " does not exist");
-    }
   }
 
   public void printObjects() {
