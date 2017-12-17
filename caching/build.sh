@@ -34,7 +34,7 @@ generic()
     echo
     echo "Testing with generic solution"
     echo "====================================="
-    javac $JFLAGS User.java ObjectCacheTest.java se/juneday/ObjectCache.java && \
+    javac $JFLAGS User.java ObjectCacheTest.java se/juneday/ObjectCache.java se/juneday/ObjectCacheReader.java && \
         test_class ObjectCacheTest && \
         echo && echo "Testing with generic solution: passed"
 }
