@@ -118,11 +118,20 @@ public class ObjectCache<T> {
       in = new ObjectInputStream(fis);
       tmpObjects = (List<T>) in.readObject();
       in.close();
-    } catch (Exception ex) {
+      objects = tmpObjects;
+    } catch (ClassNotFoundException ex) {
+      //      ex.printStackTrace();
+      System.err.println("\n***Failed reading objects from " + cacheFileName + " ***") ;
+      //      StackTraceElement[] elements = ex.getStackTrace();
+      String missingClassName = ex.getMessage();
+      System.err.print("This most likely is because one (or many) of your classes can't be loaded.");
+      System.err.println(" Suspected missing class: " + missingClassName);
+      System.err.println("");
+      System.err.println("Make sure that the class \"" + missingClassName + "\" is compiled and it coresponding class file can be found via your CLASSPATH");
+    } catch (Throwable ex) {
       ex.printStackTrace();
       return null;
     }
-    objects = tmpObjects;
     return objects;
   }
 
