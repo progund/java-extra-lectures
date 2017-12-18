@@ -22,6 +22,17 @@ public class User implements Serializable {
   ....
 ```
 
+We have written a small class (```ObjectCacheTest```) that serves as a
+test as well as an example of how to use ObjectCache. In short the
+following steps are needed:
+
+* create an ObjectCache object, including the type of the objects to cache: ```ObjectCache<User> cache = new ObjectCache<>(User.class);```  (there are constructors)
+* set the objects to cache (in RAM): ```cache.set(users);``` (objects is a List of Users)
+* write the cache to disk ```cache.push();```
+* read the cache back from disk (to RAM ```cache.pull();```
+* get the cached objects from RAM ```List<User> cachedUsers = cache.get();```
+
+
 # Links
 
 * [Serializable Objects](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html)
