@@ -101,6 +101,12 @@ public class ObjectCacheTest {
 }
 ```
 
+# Source code and examples
+
+Download the source from here: [java-extra-lectures](https://github.com/progund/java-extra-lectures). In the directory ```caching``` you'll find the ObjectCache source code (in the ```se/juneday/``` folder) and some test code. To build ObjectCache (and javadoc) and test it:
+
+```./build.sh```
+
 # Using ObjectCache in Android
 
 ## ADHD
