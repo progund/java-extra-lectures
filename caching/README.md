@@ -8,7 +8,7 @@ In this lecture we'll show you how to:
 * use serializtion to create your own cache for a specific class
 * extend this cache to cache generic objects
 
-# What to cache
+# Example of what to cache
 
 In this example we'll be caching a class, ```User```, representing a user in some system:
 
@@ -100,6 +100,16 @@ public class ObjectCacheTest {
   }
 }
 ```
+
+## Summing things up
+
+Just as with the example (surprise!) above you probably figured out (otherwise we suggest you aim for an academic carrier where lack of undeerstanding is a requirement) the important steps are:
+* create an ObjectCache object, including the type of the objects to cache: ```ObjectCache<User> cache = new ObjectCache<>(User.class);```  (there are constructors)
+* set the objects to cache (in RAM): ```cache.set(users);``` (objects is a List of Users)
+* write the cache to disk ```cache.push();```
+* read the cache back from disk (to RAM ```cache.pull();```
+* get the cached objects from RAM ```List<User> cachedUsers = cache.get();```
+
 
 # Source code and examples
 
