@@ -32,6 +32,15 @@ following steps are needed:
 * read the cache back from disk (to RAM ```cache.pull();```
 * get the cached objects from RAM ```List<User> cachedUsers = cache.get();```
 
+# Using ObjectCache in Android
+
+## ADHD
+
+Check out [ADHD](https://github.com/progund/adhd), a tool with which
+you can read out database and serialized files (ObjectCache) from an
+Android device and create text and html from that. This is useful if
+you want to see what's in your app's database etc on the Android
+device.
 
 # Links
 
