@@ -103,7 +103,7 @@ public class ObjectCacheTest {
 
 ## Summing things up
 
-Just as with the example (surprise!) above you probably figured out (otherwise we suggest you aim for an academic carrier where lack of undeerstanding is a requirement) the important steps are:
+Just as with the example (surprise!) above you probably figured out (otherwise we suggest you aim for an academic carrier where lack of understanding of code is a requirement) the important steps are:
 * create an ObjectCache object, including the type of the objects to cache: ```ObjectCache<User> cache = new ObjectCache<>(User.class);```  (there are constructors)
 * set the objects to cache (in RAM): ```cache.set(users);``` (objects is a List of Users)
 * write the cache to disk ```cache.push();```
