@@ -5,7 +5,9 @@ overhead of many of these are often too high to make them
 understandable and in some cases useful.
 
 In this lecture we'll show you how to:
+
 * use serializtion to create your own cache for a specific class
+
 * extend this cache to cache generic objects
 
 # Example of what to cache
@@ -25,6 +27,7 @@ public class User implements Serializable {
 # Requirements on the class to be cached
 
 We rely completely on [Serializable Objects](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html). To get your class Serializable you need to (read this link: [Interface Serializable](https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html)). To make things short, you did read the link didn't you?, we provide some text about serialVersionUID here: 
+
 > The serialization runtime associates with each serializable class a version number, called a serialVersionUID, which is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. If the receiver has loaded a class for the object that has a different serialVersionUID than that of the corresponding sender's class, then deserialization will result in an InvalidClassException. A serializable class can declare its own serialVersionUID explicitly by declaring a field named "serialVersionUID" that must be static, final, and of type long:
 >
 > ANY-ACCESS-MODIFIER static final long serialVersionUID = 42L;
@@ -39,11 +42,12 @@ We need to add a ```serialVersionUID```. Let's use ```1L```.
 ```  private static final long serialVersionUID = 1L;```
 
 So the class, ```User```, looks like this.
-```public class User implements Serializable {
-  String name;
-  String email;
+```
+  public class User implements Serializable {
+    String name;
+    String email;
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 ```
 etc etc
 
@@ -53,11 +57,15 @@ We have written a small class (```ObjectCacheTest```) that serves as a
 test as well as an example of how to use ObjectCache. In short the
 following steps are needed:
 
-* create an ObjectCache object, including the type of the objects to cache: ```ObjectCache<User> cache = new ObjectCache<>(User.class);```  (there are constructors)
-* set the objects to cache (in RAM): ```cache.set(users);``` (objects is a List of Users)
+* create an ObjectCache object, including the type of the objects to cache: ```ObjectCache<User> cache = new ObjectCache<>(User.class);```  (there are other constructors)
+
+* set the objects to cache (in memory): ```cache.set(users);``` (objects is a List of Users)
+
 * write the cache to disk ```cache.push();```
-* read the cache back from disk (to RAM ```cache.pull();```
-* get the cached objects from RAM ```List<User> cachedUsers = cache.get();```
+
+* read the cache back from disk (to memory ```cache.pull();```
+
+* get the cached objects from memory ```List<User> cachedUsers = cache.get();```
 
 # Using ObjectCache - a short example
 
@@ -85,15 +93,15 @@ public class ObjectCacheTest {
       users.add(new User("Henrik Sandklef", "hesa@sandklef.com"));
       users.add(new User("Rikard Fröberg", "rille@rillefroberg.se"));
       System.out.println("main: " + users);
-      // Add the users created above. Now the users are in RAM
+      // Add the users created above. Now the users are in memory
       cache.set(users);
       // Store the users set above to file. Now the users are serialized to file
       cache.push();
     } else {
       System.out.println("Reading objects");
-      // Read the users from file. Now the users are de-serialized from the file and stored in RAM
+      // Read the users from file. Now the users are de-serialized from the file and stored in memory
       cache.pull();
-      // Get the users from RAM
+      // Get the users from memory
       List<User> cachedUsers = cache.get();
       System.out.println("cached: " + cachedUsers);
     }
@@ -103,12 +111,17 @@ public class ObjectCacheTest {
 
 ## Summing things up
 
-Just as with the example (surprise!) above you probably figured out (otherwise we suggest you aim for an academic carrier where lack of understanding of code is a requirement) the important steps are:
+Just as with the example above you probably figured out the important steps are:
+
 * create an ObjectCache object, including the type of the objects to cache: ```ObjectCache<User> cache = new ObjectCache<>(User.class);```  (there are constructors)
-* set the objects to cache (in RAM): ```cache.set(users);``` (objects is a List of Users)
+
+* set the objects to cache (in memory): ```cache.set(users);``` (objects is a List of Users)
+
 * write the cache to disk ```cache.push();```
-* read the cache back from disk (to RAM ```cache.pull();```
-* get the cached objects from RAM ```List<User> cachedUsers = cache.get();```
+
+* read the cache back from disk (to memory ```cache.pull();```
+
+* get the cached objects from memory ```List<User> cachedUsers = cache.get();```
 
 
 # Source code and examples
