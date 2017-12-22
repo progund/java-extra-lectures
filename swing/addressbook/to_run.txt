@@ -1,0 +1,7 @@
+# With text ui:
+java -cp bin org.contactcompany.application.main.AddressBook
+or:
+java -Dui=cli -cp bin org.contactcompany.application.main.AddressBook
+
+# With swing gui:
+java -Dui=gui -cp bin org.contactcompany.application.main.AddressBook

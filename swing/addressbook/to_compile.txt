@@ -1,0 +1,1 @@
+find . -name '*.java'|xargs javac -Xlint:unchecked -d bin -cp src
