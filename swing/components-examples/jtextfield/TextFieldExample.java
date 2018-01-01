@@ -30,7 +30,10 @@ public class TextFieldExample {
     colorTextField = new JTextField("000000");
     colorTextField.selectAll();
     colorTextField.requestFocus();
-    colorTextField.setToolTipText("<html><ul><li>Red: FF0000</li><li>Green: 00FF00</li><li>Blue: 0000FF</li></ul></html>");
+    colorTextField.setToolTipText(new StringBuilder("<html><ul><li>Red: FF0000</li>")
+                                  .append("<li>Green: 00FF00</li>")
+                                  .append("<li>Blue: 0000FF</li></ul></html>")
+                                  .toString());
   }
 
   private void layoutComponents() {
