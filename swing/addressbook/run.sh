@@ -1,3 +1,8 @@
 #!/bin/bash
 
-java -cp bin/ org.contactcompany.application.main.AddressBook
+UI=$1
+if [[ -z "$UI" ]]
+then
+    UI=cli
+fi
+java -cp bin/ -Dui="$UI" org.contactcompany.application.main.AddressBook
