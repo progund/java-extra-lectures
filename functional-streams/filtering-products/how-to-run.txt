@@ -1,0 +1,5 @@
+$ javac FilterBuilder.java && java FilterBuilder min_price=20 max_alcohol=30
+Filtered by [min_price=20, max_alcohol=30]
+[Val de Loire 69.0kr 11.0%, Baily's 169.0kr 30.0%]
+All products:
+[Renat 100.0kr 38.0%, Spendrups 9.9kr 5.6%, Val de Loire 69.0kr 11.0%, Loch Lomond 249.0kr 40.0%, Baily's 169.0kr 30.0%]
