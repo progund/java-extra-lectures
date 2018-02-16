@@ -137,7 +137,7 @@ public class MainWindow {
   }
   
   private void layoutComponents() {
-    listPanel.add(contactsSP, BorderLayout.CENTER);
+    listPanel.add(contactsSP);
     file.add(quit);
     menuBar.add(file);
     menuBar.add(contact);
