@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class ListRemoveJava8 {
   public static void main(String[] args) {
     List<String> names = new ArrayList<>(Arrays.asList(args));
-    // Remove all names starting with "rik", Using a ListIterator
+    // Filter on all names not starting with "rik"
     names = names
       .stream()
       .filter(s -> ! s.toLowerCase().startsWith("rik"))
