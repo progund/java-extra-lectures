@@ -23,6 +23,6 @@ public class Student {
   }
 
   public String toString() {
-    return name + (email.isPresent() ? " "  + email.get() : "");
+    return (name + " " + email.orElse("")).trim();
   }
 }
