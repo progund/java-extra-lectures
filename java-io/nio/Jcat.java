@@ -20,7 +20,7 @@ public class Jcat {
         }
       } else {
         Scanner sc = new Scanner(System.in);
-        while( sc.hasNext()){
+        while (sc.hasNext()) {
           System.out.println(sc.nextLine());
         }
       }
