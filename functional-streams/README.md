@@ -3,8 +3,8 @@ Example code for our lectures and course material on Java 8 Streams and Lambdas.
 
 Addresses for instance:
 * Java 8 Streams - functional streams, pipelines
-** Streams from collections
-** IntStream (with map and reduce)
+  * Streams from collections
+  * IntStream (with map and reduce)
 * Lambda expressions
 * Method references
 
