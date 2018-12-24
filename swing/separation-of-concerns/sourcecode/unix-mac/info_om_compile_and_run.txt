@@ -1,0 +1,9 @@
+OBS: Ni som kör wintendo måste använda ; (semikolon) istället för kolon i classpath!
+För GNU/Linux och Mac OSis funkar kolon.
+
+Kompilera:
+javac -cp .:sqlite-jdbc-3.8.7.jar -d bin/ student/*.java student/data/*.java &&
+Köra:
+java -cp bin:sqlite-jdbc-3.8.7.jar student.StudentSwing
+
+Ni måste stå ovanför bin (dvs också ovanför student/ ) för att kompilera och köra med ovanstående kommandon.

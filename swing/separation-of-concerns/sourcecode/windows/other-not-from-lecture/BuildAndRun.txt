@@ -1,0 +1,1 @@
+javac -cp .:sqlite-jdbc-3.8.7.jar DBCLI.java && java -cp .:sqlite-jdbc-3.8.7.jar DBCLI
