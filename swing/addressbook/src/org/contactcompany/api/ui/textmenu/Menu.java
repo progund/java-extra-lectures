@@ -108,7 +108,10 @@ public class Menu{
         // Prompt the user for a selection (a number from the list)
         System.out.print("Please enter a number from the menu: ");
         // Read the number from the user
-        reply = Integer.parseInt(System.console().readLine());
+        // This does not work with java on cygwin:
+        //    reply = Integer.parseInt(System.console().readLine());
+        // so we're using Scanner instead
+        reply = Integer.parseInt(new java.util.Scanner(System.in).nextLine());
         // If the user wants to quit, then return from this method
         if (reply==index) {
           System.out.println("\nBye!\n");
