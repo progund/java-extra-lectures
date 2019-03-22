@@ -1,0 +1,13 @@
+import static Degree.Level.*;
+
+public class DegreeDemo {
+  public static void main(String[] args) {
+    Degree master = new Degree(Degree.Level.MASTER, "Informatics", "GU");
+
+    if (master.level() != Degree.Level.BACHELOR) {
+      System.out.println(master + " is a higher degree.");      
+    } else {
+      System.out.println(master + " is a lower degree.");
+    }
+  }
+}
