@@ -1,10 +1,11 @@
-import java.util.Set;
-import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet; // for alternative solution
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.Optional;
 
 public class Unions {
   static List<Book> getBooks() {
@@ -49,7 +50,10 @@ public class Unions {
                        findByTitle(books3, "Java"));
     System.out.println("Finding book by title Java: " +
                        findByTitle2(books3, "Databases"));
-    
+
+    // Using alternative solution to the titles union:
+    System.out.println("Alternative solution - unique titles:");
+    System.out.println(titlesUnion2(books1, books2));
   }
 
   static Book findByTitle(List<Book> books, String title) {
@@ -76,4 +80,16 @@ public class Unions {
       .collect(Collectors.toSet());
   }
 
+  /* Alternative solution using a helper method titlesSet() here: */
+  static Set<String> titlesSet(List<Book> b) {
+    return b.stream()
+      .map(Book::title)
+      .collect(Collectors.toSet());
+  }
+  static Set<String> titlesUnion2(List<Book> b1, List<Book> b2) {
+    Set<String> titles = new HashSet<>(titlesSet(b1));
+    titles.addAll(titlesSet(b2));
+    return titles;
+  }
+  
 }
