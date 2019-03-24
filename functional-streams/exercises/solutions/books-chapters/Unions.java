@@ -54,7 +54,11 @@ public class Unions {
     // Using alternative solution to the titles union:
     System.out.println("Alternative solution - unique titles:");
     System.out.println(titlesUnion2(books1, books2));
-  }
+
+    // Using alternative solution to the titles union:
+    System.out.println("Alternative solution - unique titles:");
+    System.out.println(titlesUnion3(books1, books2, books1, books2));
+}
 
   static Book findByTitle(List<Book> books, String title) {
     return findByTitle_(books, title).orElse(new Book(title));
@@ -91,5 +95,15 @@ public class Unions {
     titles.addAll(titlesSet(b2));
     return titles;
   }
-  
+
+  /* Another alternative solution to titlesUnion: */
+  /* Accepts one or more book lists */
+  @SafeVarargs
+  static Set<String> titlesUnion3(List<Book>...bs) {
+    Set<String> titles = new HashSet<>();
+    for (List<Book> books : bs) {
+        titles.addAll(titlesSet(books));
+    }
+    return titles;
+  }
 }
